@@ -1,11 +1,14 @@
 #include <ESP8266WiFi.h>
 #include <DNSServer.h>
-#include <ESP8266WebServer.h>
 #include <WiFiManager.h>    
 #include <NTPClient.h>
+
+#include "ConfigManager.h" //webserver for configuration
   
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 60000);
+
+ConfigManager config;
 
 void setup() {
   // put your setup code here, to run once:
@@ -19,6 +22,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   get_ntp_time();
+  config.update();
   delay(3000);
 }
 
@@ -40,7 +44,17 @@ void startup_wifi_manager(){
 
 //NTP Client
 void get_ntp_time(){
-  timeClient.update();
+
+
+  /**
+     * This should be called in the main loop of your application. By default an update from the NTP Server is only
+     * made every 60 seconds. This can be configured in the NTPClient constructor.
+     *
+     * @return true on success, false on failure
+   */
+  timeClient.update();  
+  
   Serial.println(timeClient.getFormattedTime());
+  Serial.println(timeClient.getEpochTime());
   
 }
