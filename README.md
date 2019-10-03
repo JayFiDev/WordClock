@@ -16,9 +16,6 @@
 - [ ] new frontplate export
 
 ## Software 
-### Inital Setup
-- [x] Finish my changes
-- [ ] Push my commits to GitHub
 
 ### WifiManager - initial configuration
 - [x] Implemented
@@ -27,11 +24,20 @@
 ### NTP client
 - [x] Implemented
 
+### WebServer - configuration of timezone, other options
+- [x] Implemented initial version
+- [x] functions to set, save, read from eeprom for config data
+- [ ] how to get ip adress? -> serial atm.
+- [ ] matrix options (different modes, etc)
+- [ ] set time from web interface
+
 ### RTC
 - [ ] save ntp to rtc
 - [ ] code for reading/writing to rtc
 
 ### RGB matrix
 - [x] layout
-- [ ] code to display
+- [ ] code to display time
 - [ ] mapping time to pixels
+- [ ] different color modes
+
