@@ -45,13 +45,12 @@ void ConfigManager::handle_utc()
 
   String msg = server->arg("utc");
   int offset = msg.toInt();
-  if(offset > -12 && offset < 12);
+  if(offset > -12 && offset < 12)
   {
     Serial.print("Setting utc offset to EEPROM = ");
     Serial.println(offset);
     s.utc_offset = offset;
     setSettings();
-    
   }
 }
 
